@@ -5,6 +5,7 @@ This agent demonstrates:
 - DuckDuckGo web search tool
 - Braintrust observability using OpenTelemetry
 - Anthropic Claude Haiku via Strands
+- MCP server integration via Context7
 """
 
 import asyncio
@@ -16,10 +17,12 @@ from typing import Optional
 from braintrust.otel import BraintrustSpanProcessor
 from ddgs import DDGS
 from dotenv import load_dotenv
+from mcp.client.streamable_http import streamablehttp_client
 from opentelemetry.sdk.trace import TracerProvider
 from strands import Agent
 from strands.telemetry import StrandsTelemetry
 from strands.tools.decorator import tool
+from strands.tools.mcp import MCPClient
 
 
 # Configure logging
@@ -105,7 +108,7 @@ def _setup_observability() -> TracerProvider:
     return tracer_provider
 
 
-def _create_agent() -> Agent:
+def _build_agent(mcp_tools: list) -> Agent:
     """
     Create and configure the Strands agent.
 
@@ -123,15 +126,13 @@ def _create_agent() -> Agent:
     os.environ["ANTHROPIC_API_KEY"] = anthropic_api_key
 
     # Configure the agent with system prompt
-    system_prompt = """You are a helpful AI assistant with access to DuckDuckGo web search.
+    system_prompt = """You are a helpful AI assistant with access to DuckDuckGo web search and Context7 documentation tools.
 
 Use the DuckDuckGo search tool to find current information, news, and answers to questions.
+Use the Context7 MCP tools to search programming documentation when relevant.
 Provide clear, accurate, and helpful responses based on the search results.
 Always cite your sources when using search results."""
 
-    # Create agent with Anthropic Claude 3 Haiku and DuckDuckGo tool
-    # Use Anthropic model directly (not through Bedrock)
-    # API key is already set in environment variable above
     from strands.models import AnthropicModel
 
     model = AnthropicModel(
@@ -143,10 +144,10 @@ Always cite your sources when using search results."""
     agent = Agent(
         system_prompt=system_prompt,
         model=model,
-        tools=[duckduckgo_search]
+        tools=[duckduckgo_search] + mcp_tools
     )
 
-    logger.info("Agent created successfully with Braintrust observability")
+    logger.info(f"Agent created with {len(mcp_tools)} MCP tools + duckduckgo")
     return agent
 
 
@@ -176,49 +177,52 @@ def main() -> None:
     """Main function to run the agent."""
     logger.info("Starting Simple Agent with Observability")
 
-    # Create agent
-    agent = _create_agent()
+    def create_transport():
+        return streamablehttp_client("https://mcp.context7.com/mcp")
 
-    # Example queries to test different tools
-    test_queries = [
-        "What is the latest news about AI?",
-        "How do I use async/await in Python?",
-        "What are the best practices for React hooks?"
-    ]
+    mcp_client = MCPClient(create_transport)
 
     print("\n" + "="*80)
     print("Simple Agent with Observability Demo")
     print("="*80 + "\n")
 
-    # Run interactive loop
-    print("Ask me anything! I can search the web with DuckDuckGo.")
-    print("Type 'quit' to exit.\n")
-
-    while True:
+    # keep MCP connection open for the whole session so tools actually work
+    with mcp_client:
         try:
-            user_input = input("You: ").strip()
-
-            if user_input.lower() in ["quit", "exit", "q"]:
-                print("\nGoodbye!")
-                break
-
-            if not user_input:
-                continue
-
-            # Run agent
-            response = asyncio.run(_run_agent_async(agent, user_input))
-
-            print(f"\nAgent: {response}\n")
-
-        except EOFError:
-            print("\n\nGoodbye!")
-            break
-        except KeyboardInterrupt:
-            print("\n\nGoodbye!")
-            break
+            mcp_tools = mcp_client.list_tools_sync()
+            logger.info(f"Loaded {len(mcp_tools)} tools from Context7")
         except Exception as e:
-            logger.error(f"Error running agent: {e}")
-            print(f"\nError: {e}\n")
+            logger.warning(f"MCP connection failed, continuing without it: {e}")
+            mcp_tools = []
+
+        agent = _build_agent(mcp_tools)
+
+        print("Ask me anything! I can search the web or look up documentation.")
+        print("Type 'quit' to exit.\n")
+
+        while True:
+            try:
+                user_input = input("You: ").strip()
+
+                if user_input.lower() in ["quit", "exit", "q"]:
+                    print("\nGoodbye!")
+                    break
+
+                if not user_input:
+                    continue
+
+                response = asyncio.run(_run_agent_async(agent, user_input))
+                print(f"\nAgent: {response}\n")
+
+            except EOFError:
+                print("\n\nGoodbye!")
+                break
+            except KeyboardInterrupt:
+                print("\n\nGoodbye!")
+                break
+            except Exception as e:
+                logger.error(f"Error running agent: {e}")
+                print(f"\nError: {e}\n")
 
 
 if __name__ == "__main__":
