@@ -1,0 +1,249 @@
+INFO:     Started server process [7463]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:50520 - "GET /ping HTTP/1.1" 200 OK
+2026-03-27 21:15:24,900,p7463,{agent.py:432},INFO,Initializing Agent - user: alice_user, agent: memory-agent, session: alice-session-1
+2026-03-27 21:15:24,901,p7463,{memory_manager.py:142},INFO,Initializing multi-tenant MemoryManager with Mem0 cloud platform
+2026-03-27 21:15:25,265,p7463,{memory_manager.py:147},INFO,Mem0 cloud client initialized successfully
+2026-03-27 21:15:25,265,p7463,{agent.py:452},INFO,Memory manager initialized for multi-tenant operation
+2026-03-27 21:15:25,267,p7463,{agent.py:167},INFO,Created search_memory tool
+2026-03-27 21:15:25,269,p7463,{agent.py:239},INFO,Created insert_memory tool
+2026-03-27 21:15:25,270,p7463,{agent.py:320},INFO,Created web_search tool
+2026-03-27 21:15:25,271,p7463,{agent.py:480},INFO,Initialized Agent with model claude-haiku-4-5-20251001 and 3 tools (2 memory + 1 web search)
+2026-03-27 21:15:25,271,p7463,{agent.py:512},INFO,Processing user input (length: 39 chars)
+2026-03-27 21:15:25,272,p7463,{metrics.py:557},INFO,Creating Strands MetricsClient
+[92m21:15:25 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:25,293,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:26,232,p7463,{agent.py:119},INFO,[TOOL INVOKED] search_memory called with query='Alice software engineer background information', limit=5, user_id=alice_user, run_id=alice-session-1
+2026-03-27 21:15:26,232,p7463,{agent.py:127},INFO,Searching memories for: 'Alice software engineer background information' (limit=5)
+2026-03-27 21:15:26,232,p7463,{memory_manager.py:285},INFO,Searching memories for user=alice_user: 'Alice software engineer background information' (limit=5, searching across ALL sessions)
+2026-03-27 21:15:26,509,p7463,{memory_manager.py:308},INFO,No memories found for query
+2026-03-27 21:15:26,510,p7463,{agent.py:145},INFO,No memories found for query
+[92m21:15:26 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:26,512,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:28,486,p7463,{agent.py:521},INFO,Received response (length: 572 chars)
+
+Tool #1: search_memory
+Great to meet you, Alice! Nice to know you're a software engineer. I don't have any previous context about you yet, so this is our first interaction (or at least, I'm starting fresh with you).
+
+Feel free to tell me more about yourself and what you work on:
+- What programming languages or tech stack do you specialize in?
+- What type of projects or domains are you working in (web, mobile, backend, data, etc.)?
+- Is there anything specific you'd like help with today?
+
+I'll remember our conversation going forward, so we can pick up where we left off next time we chat! 😊INFO:     127.0.0.1:60852 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:15:29,045,p7463,{agent.py:512},INFO,Processing user input (length: 32 chars)
+[92m21:15:29 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:29,048,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:29,910,p7463,{agent.py:206},INFO,[TOOL INVOKED] insert_memory called with content='Alice is a software engineer who prefers Python for development...', metadata={'category': 'user_preferences', 'topic': 'programming_languages'}, user_id=alice_user, run_id=alice-session-1
+2026-03-27 21:15:29,911,p7463,{agent.py:208},INFO,Inserting explicit memory: 'Alice is a software engineer who prefers Python for development...'
+2026-03-27 21:15:29,911,p7463,{memory_manager.py:190},INFO,Inserting memory for user=alice_user, agent=memory-agent, session=alice-session-1: 'Alice is a software engineer who prefers Python for development...'
+2026-03-27 21:15:30,492,p7463,{memory_manager.py:212},INFO,Memory stored for user=alice_user with context (agent=memory-agent, session=alice-session-1)
+2026-03-27 21:15:30,492,p7463,{memory_manager.py:222},INFO,Memory inserted successfully
+2026-03-27 21:15:30,492,p7463,{agent.py:226},INFO,Successfully inserted memory
+[92m21:15:30 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:30,494,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:31,972,p7463,{agent.py:521},INFO,Received response (length: 502 chars)
+
+Tool #2: insert_memory
+Perfect! Python is a great choice—it's versatile, readable, and has an amazing ecosystem. Whether it's web development with frameworks like Django or FastAPI, data science with pandas and scikit-learn, automation, or other domains, Python is solid across the board.
+
+I've noted that you prefer Python, so I'll keep that in mind for any suggestions or help I can offer going forward.
+
+What kinds of projects do you typically work on with Python? Or is there something specific I can help you with today?INFO:     127.0.0.1:60854 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:15:32,665,p7463,{agent.py:512},INFO,Processing user input (length: 37 chars)
+[92m21:15:32 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:32,668,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:34,034,p7463,{agent.py:521},INFO,Received response (length: 288 chars)
+Based on what you've told me, you prefer **Python** for development! That's the main programming language preference you've shared with me so far.
+
+If you work with other languages regularly or have other preferences beyond Python, feel free to let me know and I'll update my knowledge. 😊INFO:     127.0.0.1:58192 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:15:35,059,p7463,{agent.py:512},INFO,Processing user input (length: 33 chars)
+[92m21:15:35 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:35,063,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:35,814,p7463,{agent.py:206},INFO,[TOOL INVOKED] insert_memory called with content='Alice is currently working on a FastAPI project...', metadata={'category': 'current_projects', 'topic': 'fastapi', 'framework': 'FastAPI'}, user_id=alice_user, run_id=alice-session-1
+2026-03-27 21:15:35,815,p7463,{agent.py:208},INFO,Inserting explicit memory: 'Alice is currently working on a FastAPI project...'
+2026-03-27 21:15:35,815,p7463,{memory_manager.py:190},INFO,Inserting memory for user=alice_user, agent=memory-agent, session=alice-session-1: 'Alice is currently working on a FastAPI project...'
+2026-03-27 21:15:37,798,p7463,{memory_manager.py:212},INFO,Memory stored for user=alice_user with context (agent=memory-agent, session=alice-session-1)
+2026-03-27 21:15:37,798,p7463,{memory_manager.py:222},INFO,Memory inserted successfully
+2026-03-27 21:15:37,798,p7463,{agent.py:226},INFO,Successfully inserted memory
+[92m21:15:37 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:37,801,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:39,734,p7463,{agent.py:521},INFO,Received response (length: 769 chars)
+
+Tool #3: insert_memory
+Nice! FastAPI is an excellent choice for building modern APIs with Python. It's got great features like:
+- Automatic API documentation (Swagger UI and ReDoc)
+- Type hints and validation with Pydantic
+- Async/await support for high performance
+- Easy dependency injection
+
+I'd be happy to help you with your FastAPI project! A few things that might be useful to know:
+
+- **What are you building?** (What does the API do?)
+- **Are you running into any specific challenges** or have questions about implementation?
+- **What stage are you at?** (Just starting, in the middle of development, ready to deploy, etc.)
+
+Feel free to ask me questions about FastAPI architecture, best practices, debugging, deployment, or anything else related to your project. I'm here to help! 🚀INFO:     127.0.0.1:58208 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:15:40,252,p7463,{agent.py:512},INFO,Processing user input (length: 30 chars)
+[92m21:15:40 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:40,256,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:15:42,134,p7463,{agent.py:521},INFO,Received response (length: 489 chars)
+Here's what we've discussed so far in our conversation:
+
+1. **Your background**: You're a software engineer named Alice
+2. **Your programming preference**: You prefer Python for development
+3. **Your current project**: You're working on a FastAPI project
+
+That's the main context I have about you right now. I've stored these details so I can reference them in future conversations.
+
+Is there anything else you'd like to tell me about yourself or your FastAPI project that I should know? 😊INFO:     127.0.0.1:58222 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:16:33,372,p7463,{agent.py:432},INFO,Initializing Agent - user: alice_user, agent: memory-agent, session: alice-session-2
+2026-03-27 21:16:33,372,p7463,{memory_manager.py:142},INFO,Initializing multi-tenant MemoryManager with Mem0 cloud platform
+2026-03-27 21:16:33,876,p7463,{memory_manager.py:147},INFO,Mem0 cloud client initialized successfully
+2026-03-27 21:16:33,876,p7463,{agent.py:452},INFO,Memory manager initialized for multi-tenant operation
+2026-03-27 21:16:33,877,p7463,{agent.py:167},INFO,Created search_memory tool
+2026-03-27 21:16:33,880,p7463,{agent.py:239},INFO,Created insert_memory tool
+2026-03-27 21:16:33,881,p7463,{agent.py:320},INFO,Created web_search tool
+2026-03-27 21:16:33,881,p7463,{agent.py:480},INFO,Initialized Agent with model claude-haiku-4-5-20251001 and 3 tools (2 memory + 1 web search)
+2026-03-27 21:16:33,881,p7463,{agent.py:512},INFO,Processing user input (length: 30 chars)
+[92m21:16:33 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:33,884,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:34,759,p7463,{agent.py:119},INFO,[TOOL INVOKED] search_memory called with query='user information preferences background', limit=10, user_id=alice_user, run_id=alice-session-2
+2026-03-27 21:16:34,760,p7463,{agent.py:127},INFO,Searching memories for: 'user information preferences background' (limit=10)
+2026-03-27 21:16:34,760,p7463,{memory_manager.py:285},INFO,Searching memories for user=alice_user: 'user information preferences background' (limit=10, searching across ALL sessions)
+2026-03-27 21:16:35,007,p7463,{memory_manager.py:333},INFO,Found 1 relevant memories
+2026-03-27 21:16:35,007,p7463,{agent.py:154},INFO,Found 1 relevant memories
+[92m21:16:35 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:35,009,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:36,306,p7463,{agent.py:521},INFO,Received response (length: 425 chars)
+I'll search my memory to see what information I have about you from our previous conversations.
+Tool #1: search_memory
+Based on my memory, I know that:
+
+**You're Alice, a software engineer who prefers Python for development.**
+
+That's the main information I have stored about you from our previous conversations. If there's more you'd like me to know or remember about you, feel free to share! I can also store additional information if you'd like to make sure I remember specific details about your preferences, projects, goals, or background.INFO:     127.0.0.1:56588 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:16:36,841,p7463,{agent.py:512},INFO,Processing user input (length: 29 chars)
+[92m21:16:36 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:36,844,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:37,777,p7463,{agent.py:119},INFO,[TOOL INVOKED] search_memory called with query='Alice project working on', limit=10, user_id=alice_user, run_id=alice-session-2
+2026-03-27 21:16:37,778,p7463,{agent.py:127},INFO,Searching memories for: 'Alice project working on' (limit=10)
+2026-03-27 21:16:37,778,p7463,{memory_manager.py:285},INFO,Searching memories for user=alice_user: 'Alice project working on' (limit=10, searching across ALL sessions)
+2026-03-27 21:16:38,066,p7463,{memory_manager.py:333},INFO,Found 1 relevant memories
+2026-03-27 21:16:38,066,p7463,{agent.py:154},INFO,Found 1 relevant memories
+[92m21:16:38 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:38,068,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:38,811,p7463,{agent.py:521},INFO,Received response (length: 145 chars)
+
+Tool #2: search_memory
+You're currently working on a **FastAPI project**! 
+
+Is there anything specific about the FastAPI project you'd like to discuss or get help with?INFO:     127.0.0.1:56598 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:16:46,774,p7463,{agent.py:432},INFO,Initializing Agent - user: carol_user, agent: memory-agent, session: carol-session-1
+2026-03-27 21:16:46,774,p7463,{memory_manager.py:142},INFO,Initializing multi-tenant MemoryManager with Mem0 cloud platform
+2026-03-27 21:16:47,108,p7463,{memory_manager.py:147},INFO,Mem0 cloud client initialized successfully
+2026-03-27 21:16:47,108,p7463,{agent.py:452},INFO,Memory manager initialized for multi-tenant operation
+2026-03-27 21:16:47,111,p7463,{agent.py:167},INFO,Created search_memory tool
+2026-03-27 21:16:47,113,p7463,{agent.py:239},INFO,Created insert_memory tool
+2026-03-27 21:16:47,115,p7463,{agent.py:320},INFO,Created web_search tool
+2026-03-27 21:16:47,116,p7463,{agent.py:480},INFO,Initialized Agent with model claude-haiku-4-5-20251001 and 3 tools (2 memory + 1 web search)
+2026-03-27 21:16:47,116,p7463,{agent.py:512},INFO,Processing user input (length: 36 chars)
+[92m21:16:47 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:47,118,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:48,819,p7463,{agent.py:119},INFO,[TOOL INVOKED] search_memory called with query='Carol data scientist background experience', limit=5, user_id=carol_user, run_id=carol-session-1
+2026-03-27 21:16:48,820,p7463,{agent.py:127},INFO,Searching memories for: 'Carol data scientist background experience' (limit=5)
+2026-03-27 21:16:48,820,p7463,{memory_manager.py:285},INFO,Searching memories for user=carol_user: 'Carol data scientist background experience' (limit=5, searching across ALL sessions)
+2026-03-27 21:16:49,077,p7463,{memory_manager.py:308},INFO,No memories found for query
+2026-03-27 21:16:49,077,p7463,{agent.py:145},INFO,No memories found for query
+[92m21:16:49 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:49,079,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:50,989,p7463,{agent.py:521},INFO,Received response (length: 682 chars)
+
+Tool #1: search_memory
+Hi Carol! Great to meet you! 👋 
+
+I see this is our first interaction. I'm happy to help you with anything data science-related - whether that's working on analysis, brainstorming projects, discussing techniques, coding questions, or anything else you might need assistance with.
+
+Since you're a data scientist, I'm curious to know more:
+- **What area of data science do you specialize in?** (e.g., machine learning, statistics, NLP, computer vision, analytics, etc.)
+- **What are you working on right now?** 
+- **Any specific tools or languages you prefer?** (Python, R, SQL, etc.)
+
+Feel free to share as much or as little as you'd like, and let me know how I can best assist you! 😊INFO:     127.0.0.1:38492 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:16:51,577,p7463,{agent.py:512},INFO,Processing user input (length: 37 chars)
+[92m21:16:51 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:51,581,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:53,271,p7463,{agent.py:119},INFO,[TOOL INVOKED] search_memory called with query='Carol programming languages preferences favorite', limit=10, user_id=carol_user, run_id=carol-session-1
+2026-03-27 21:16:53,272,p7463,{agent.py:127},INFO,Searching memories for: 'Carol programming languages preferences favorite' (limit=10)
+2026-03-27 21:16:53,272,p7463,{memory_manager.py:285},INFO,Searching memories for user=carol_user: 'Carol programming languages preferences favorite' (limit=10, searching across ALL sessions)
+2026-03-27 21:16:53,589,p7463,{memory_manager.py:308},INFO,No memories found for query
+2026-03-27 21:16:53,589,p7463,{agent.py:145},INFO,No memories found for query
+[92m21:16:53 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:53,591,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:55,465,p7463,{agent.py:521},INFO,Received response (length: 491 chars)
+
+Tool #2: search_memory
+I don't have any information about your programming language preferences yet - this is actually the first time we've chatted! We just started our conversation.
+
+I'd love to learn about your preferences though! **Which programming languages do you like working with?** For example:
+- Python, R, SQL, Java, C++, Julia, Scala, etc.?
+- Do you have a go-to language for data science work?
+- Any languages you prefer to avoid?
+
+Once you tell me, I can remember this for our future conversations! 😊INFO:     127.0.0.1:38498 - "POST /invocation HTTP/1.1" 200 OK
+2026-03-27 21:16:55,963,p7463,{agent.py:512},INFO,Processing user input (length: 31 chars)
+[92m21:16:55 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:55,967,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:56,687,p7463,{agent.py:119},INFO,[TOOL INVOKED] search_memory called with query='Alice programming languages preferences', limit=10, user_id=carol_user, run_id=carol-session-1
+2026-03-27 21:16:56,687,p7463,{agent.py:127},INFO,Searching memories for: 'Alice programming languages preferences' (limit=10)
+2026-03-27 21:16:56,687,p7463,{memory_manager.py:285},INFO,Searching memories for user=carol_user: 'Alice programming languages preferences' (limit=10, searching across ALL sessions)
+2026-03-27 21:16:56,923,p7463,{memory_manager.py:308},INFO,No memories found for query
+2026-03-27 21:16:56,924,p7463,{agent.py:145},INFO,No memories found for query
+[92m21:16:56 - LiteLLM:INFO[0m: utils.py:3932 - 
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:16:56,926,p7463,{utils.py:3932},INFO,
+LiteLLM completion() model= claude-haiku-4-5-20251001; provider = anthropic
+2026-03-27 21:17:00,504,p7463,{agent.py:521},INFO,Received response (length: 476 chars)
+
+Tool #3: search_memory
+No, I don't have any information about Alice's preferences. I don't have records of conversations with someone named Alice.
+
+My memory is personalized to each user - I can only recall information that you (Carol) have shared with me in our conversations, not details about other people unless you tell me about them.
+
+Is Alice someone you work with? If you'd like, you could tell me about Alice's preferences, and I can remember that for context in our future conversations! 😊INFO:     127.0.0.1:46506 - "POST /invocation HTTP/1.1" 200 OK

@@ -1,0 +1,65 @@
+=== Alice Session 1 ===
+
+User: Hi, I'm Alice. I'm a software engineer.
+Agent: Great to meet you, Alice! Nice to know you're a software engineer. I don't have any previous context about you yet, so this is our first interaction (or at least, I'm starting fresh with you).
+
+Feel free to tell me more about yourself and what you work on:
+- What programming languages or tech stack do you specialize in?
+- What type of projects or domains are you working in (web, mobile, backend, data, etc.)?
+- Is there anything specific you'd like help with today?
+
+I'll remember our conversation going forward, so we can pick up where we left off next time we chat! 😊
+
+User: I prefer Python for development.
+Agent: Perfect! Python is a great choice—it's versatile, readable, and has an amazing ecosystem. Whether it's web development with frameworks like Django or FastAPI, data science with pandas and scikit-learn, automation, or other domains, Python is solid across the board.
+
+I've noted that you prefer Python, so I'll keep that in mind for any suggestions or help I can offer going forward.
+
+What kinds of projects do you typically work on with Python? Or is there something specific I can help you with today?
+
+User: What programming languages do I like?
+Agent: Based on what you've told me, you prefer **Python** for development! That's the main programming language preference you've shared with me so far.
+
+If you work with other languages regularly or have other preferences beyond Python, feel free to let me know and I'll update my knowledge. 😊
+
+User: I'm working on a FastAPI project.
+Agent: Nice! FastAPI is an excellent choice for building modern APIs with Python. It's got great features like:
+- Automatic API documentation (Swagger UI and ReDoc)
+- Type hints and validation with Pydantic
+- Async/await support for high performance
+- Easy dependency injection
+
+I'd be happy to help you with your FastAPI project! A few things that might be useful to know:
+
+- **What are you building?** (What does the API do?)
+- **Are you running into any specific challenges** or have questions about implementation?
+- **What stage are you at?** (Just starting, in the middle of development, ready to deploy, etc.)
+
+Feel free to ask me questions about FastAPI architecture, best practices, debugging, deployment, or anything else related to your project. I'm here to help! 🚀
+
+User: What have we discussed so far?
+Agent: Here's what we've discussed so far in our conversation:
+
+1. **Your background**: You're a software engineer named Alice
+2. **Your programming preference**: You prefer Python for development
+3. **Your current project**: You're working on a FastAPI project
+
+That's the main context I have about you right now. I've stored these details so I can reference them in future conversations.
+
+Is there anything else you'd like to tell me about yourself or your FastAPI project that I should know? 😊
+
+
+=== Alice Session 2 (New Session) ===
+
+User: What do you remember about me?
+Agent: Based on my memory, I know that:
+
+**You're Alice, a software engineer who prefers Python for development.**
+
+That's the main information I have stored about you from our previous conversations. If there's more you'd like me to know or remember about you, feel free to share! I can also store additional information if you'd like to make sure I remember specific details about your preferences, projects, goals, or background.
+
+User: What project am I working on?
+Agent: You're currently working on a **FastAPI project**! 
+
+Is there anything specific about the FastAPI project you'd like to discuss or get help with?
+

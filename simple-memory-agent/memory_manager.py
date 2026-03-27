@@ -200,11 +200,13 @@ class MemoryManager:
             if run_id:
                 full_metadata["run_id"] = run_id
 
-            # Store in Mem0 cloud platform using messages format (required for v2 retrieval)
+            # Store in Mem0 cloud platform using messages format without run_id/metadata
+            # (required for v2 retrieval to work correctly per Mem0 API behavior)
+            # async_mode=False ensures memory is processed promptly (not queued indefinitely)
             self.memory.add(
                 messages=[{"role": "user", "content": content}],
                 user_id=user_id,
-                metadata=full_metadata
+                async_mode=False
             )
 
             logger.info(f"Memory stored for user={user_id} with context (agent={agent_id}, session={run_id})")
@@ -506,31 +508,20 @@ class MemoryManager:
             metadata: Optional metadata for the conversation turn
         """
         try:
-            # Format conversation as string for Mem0 cloud platform
-            # (Mem0 cloud works better with string format than message list)
-            conversation_text = f"User: {user_message}\nAssistant: {assistant_message}"
-
-            # Enhance metadata with session context
-            full_metadata = metadata or {}
-            full_metadata.update({
-                "conversation_turn": True,
-                "type": "episodic"
-            })
-            if agent_id:
-                full_metadata["agent_id"] = agent_id
-            if run_id:
-                full_metadata["run_id"] = run_id
-
             logger.debug(
                 f"Adding conversation for user={user_id}, agent={agent_id}, session={run_id} "
                 f"(user msg length: {len(user_message)})"
             )
 
+            # Use messages format without run_id/metadata for v2 retrieval compatibility
+            # async_mode=False ensures memory is processed promptly
             self.memory.add(
-                conversation_text,
+                messages=[
+                    {"role": "user", "content": user_message},
+                    {"role": "assistant", "content": assistant_message}
+                ],
                 user_id=user_id,
-                run_id=run_id,
-                metadata=full_metadata
+                async_mode=False
             )
 
             logger.debug(f"Conversation stored for user={user_id} with context (agent={agent_id}, session={run_id})")

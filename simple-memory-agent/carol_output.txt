@@ -1,0 +1,31 @@
+=== Carol Session 1 ===
+
+User: Hi, I'm Carol. I'm a data scientist.
+Agent: Hi Carol! Great to meet you! 👋 
+
+I see this is our first interaction. I'm happy to help you with anything data science-related - whether that's working on analysis, brainstorming projects, discussing techniques, coding questions, or anything else you might need assistance with.
+
+Since you're a data scientist, I'm curious to know more:
+- **What area of data science do you specialize in?** (e.g., machine learning, statistics, NLP, computer vision, analytics, etc.)
+- **What are you working on right now?** 
+- **Any specific tools or languages you prefer?** (Python, R, SQL, etc.)
+
+Feel free to share as much or as little as you'd like, and let me know how I can best assist you! 😊
+
+User: What programming languages do I like?
+Agent: I don't have any information about your programming language preferences yet - this is actually the first time we've chatted! We just started our conversation.
+
+I'd love to learn about your preferences though! **Which programming languages do you like working with?** For example:
+- Python, R, SQL, Java, C++, Julia, Scala, etc.?
+- Do you have a go-to language for data science work?
+- Any languages you prefer to avoid?
+
+Once you tell me, I can remember this for our future conversations! 😊
+
+User: Do you know what Alice prefers?
+Agent: No, I don't have any information about Alice's preferences. I don't have records of conversations with someone named Alice.
+
+My memory is personalized to each user - I can only recall information that you (Carol) have shared with me in our conversations, not details about other people unless you tell me about them.
+
+Is Alice someone you work with? If you'd like, you could tell me about Alice's preferences, and I can remember that for context in our future conversations! 😊
+
