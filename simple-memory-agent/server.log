@@ -247,3 +247,7 @@ No, I don't have any information about Alice's preferences. I don't have records
 My memory is personalized to each user - I can only recall information that you (Carol) have shared with me in our conversations, not details about other people unless you tell me about them.
 
 Is Alice someone you work with? If you'd like, you could tell me about Alice's preferences, and I can remember that for context in our future conversations! 😊INFO:     127.0.0.1:46506 - "POST /invocation HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7463]
